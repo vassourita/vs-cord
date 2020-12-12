@@ -6,7 +6,7 @@ import { Strategy as GithubStrategy, Profile } from 'passport-github'
 
 @Injectable()
 export class GithubAuthStrategy extends PassportStrategy(GithubStrategy, 'github') {
-  constructor(config: ConfigService) {
+  public constructor(config: ConfigService) {
     super({
       clientID: config.get('github.clientId'),
       clientSecret: config.get('github.clientSecret'),
@@ -14,7 +14,7 @@ export class GithubAuthStrategy extends PassportStrategy(GithubStrategy, 'github
     })
   }
 
-  async validate(accessToken: string, refreshToken: string, profile: Profile) {
+  public async validate(accessToken: string, refreshToken: string, profile: Profile) {
     return profile
   }
 }

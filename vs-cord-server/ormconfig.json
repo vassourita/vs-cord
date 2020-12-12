@@ -1,0 +1,19 @@
+{
+   "type": "postgres",
+   "host": "localhost",
+   "port": 4000,
+   "username": "docker",
+   "password": "docker",
+   "database": "vscord",
+   "logging": true,
+   "entities": [
+      "src/**/entities/*.ts"
+   ],
+   "migrations": [
+      "src/database/migrations/**/*.ts"
+   ],
+   "cli": {
+      "entitiesDir": "src/**/entities",
+      "migrationsDir": "src/database/migrations"
+   }
+}
