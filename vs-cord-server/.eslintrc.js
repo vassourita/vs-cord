@@ -20,6 +20,7 @@ module.exports = {
     'space-before-function-paren': 'off',
     'no-useless-constructor': 'off',
     'no-unused-vars': 'error',
+    'no-use-before-define': 'off',
     '@typescript-eslint/no-unused-vars': [
       'error',
       {
