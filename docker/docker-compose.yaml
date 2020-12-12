@@ -1,0 +1,15 @@
+version: '3.1'
+
+services:
+  accord-postgres:
+    image: postgres
+    container_name: 'vscord-pg'
+    restart: always
+    ports:
+      - 4000:5432
+    environment:
+      - POSTGRES_PASSWORD=docker
+      - POSTGRES_USER=docker
+      - POSTGRES_DB=vscord
+    volumes:
+      - './volume-data/vscord-pg:/var/lib/postgresql/data'
