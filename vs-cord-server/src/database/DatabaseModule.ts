@@ -1,4 +1,4 @@
-import { MiddlewareConsumer, Module, NestModule, OnModuleInit } from '@nestjs/common'
+import { MiddlewareConsumer, Module, NestModule, OnApplicationBootstrap } from '@nestjs/common'
 import { ConfigService } from '@nestjs/config'
 import { TypeOrmModule } from '@nestjs/typeorm'
 
@@ -9,15 +9,15 @@ import { ConfigModule } from '../config/ConfigModule'
 @Module({
   imports: [
     TypeOrmModule.forRootAsync({
-      useFactory: (config: ConfigService) => ({
-        ...config.get(`database.${config.get('app.env')}`)
+      useFactory: (configService: ConfigService) => ({
+        ...configService.get(`database.${configService.get('app.env')}`)
       }),
       inject: [ConfigService]
     })
   ]
 })
-export class DatabaseModule implements NestModule, OnModuleInit {
-  public async onModuleInit() {
+export class DatabaseModule implements NestModule, OnApplicationBootstrap {
+  public async onApplicationBootstrap() {
     const { appConfig, typeormConfig } = ConfigModule
     const connectionName = typeormConfig()[appConfig().env].name
     const connection = getConnection(connectionName)

@@ -1,12 +1,12 @@
-import { Column, Entity, PrimaryColumn } from 'typeorm'
+import { BaseEntity, Column, Entity, PrimaryColumn } from 'typeorm'
 
 @Entity('user')
-export class UserEntity {
+export class User extends BaseEntity {
   @PrimaryColumn()
-  public id: number
+  public githubId: string
 
   @Column()
-  public login: string
+  public username: string
 
   @Column()
   public name: string

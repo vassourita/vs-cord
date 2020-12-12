@@ -26,7 +26,7 @@ export class ConfigModule {
   public static typeormConfig = registerAs<() => Record<string, ConnectionOptions>>('typeorm', () => ({
     development: {
       type: 'postgres',
-      name: 'vscord-pg',
+      name: 'default',
       host: process.env.DATABASE_HOST || 'localhost',
       port: Number(process.env.DATABASE_PORT) || 5432,
       database: process.env.DATABASE_NAME || 'vscord',

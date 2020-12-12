@@ -1,7 +1,6 @@
-import { Profile as GithubProfile } from 'passport-github'
+import { UserEntity } from '../../dist/user/entities/UserEntity'
 
 declare namespace Express {
-  export interface User extends GithubProfile {
-    id: string
+  export interface User extends UserEntity {
   }
 }
